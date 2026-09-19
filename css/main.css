@@ -1,0 +1,663 @@
+/*
+
+動画
+全幅で背景に固定します。
+
+画像の白枠線はCSSで設定し、画像内のテキストの下に影をつけます。画像全体をリンクにします。
+
+3つの円はリンクにして、ホバー時は左から右にスライドするよう背景色を変更します。（※詳細はデモ参照）
+
+トップへ戻るボタン
+スクロール位置が700pxを超えた時点で右下に表示します。クリックすると最上部へ戻ります。
+
+レスポンシブ
+スマホの場合はヘッダーを上部に固定します。*/
+:root {
+  --bg-black: #000;
+  --text-black: #121212;
+  --white: white;
+  --dark-gray: #414141;
+}
+* {
+  font-family: "Noto Sans JP";
+}
+html {
+  scroll-behavior: smooth;
+}
+/*header==================================================================*/
+.header {
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+}
+.header-wrapper {
+  margin-top: 40px;
+  margin-left: 45px;
+}
+.logo {
+  width: 200px;
+  margin-bottom: 38px;
+}
+.logo-img {
+  width: 100%;
+}
+.gnav-1 {
+  margin-bottom: 76px;
+}
+.gnav-1__item,
+.gnav-2__item {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.gnav-1__item a,
+.gnav-2__item a {
+  color: var(--text-black);
+}
+.main,
+.footer {
+  margin-left: 300px;
+}
+
+/*main==========================================================*/
+.inner {
+  max-width: 900px;
+  padding: 80px 20px;
+  margin: 0 auto;
+  width: 100%;
+}
+.section-title {
+  position: relative;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 67px;
+}
+.section-title::before,
+.section-title::after {
+  position: absolute;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 250px;
+}
+.section-title::before {
+  top: 50%;
+  left: 0;
+}
+.section-title::after {
+  top: 50%;
+  right: 0;
+}
+.project-title,
+.feature-title {
+  color: var(--white);
+}
+.project-title::before,
+.project-title::after,
+.feature-title::before,
+.feature-title::after {
+  background-color: var(--white);
+}
+.flow-title::before,
+.flow-title::after,
+.contact-title::before,
+.contact-title::after {
+  background-color: var(--text-black);
+}
+
+/*video*/
+.video {
+  width: 100%;
+  height: 100vh;
+}
+.video video {
+  position: fixed;
+  top: -220px;
+  z-index: -1;
+}
+
+/*project*/
+.project {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+}
+.project-imgs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.project-imgs__item {
+  width: 47%;
+  margin-bottom: 50px;
+  position: relative;
+  border: 1px solid white;
+}
+.project-imgs__item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 -30px 15px 1px #2e2e2e inset;
+}
+
+.project-imgs__itemImg {
+  width: 100%;
+}
+.project-imgs__itemName {
+  position: absolute;
+  left: 7px;
+  bottom: 4px;
+  font-size: 12px;
+  color: var(--white);
+  z-index: 5;
+}
+
+/*feature*/
+.feature {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--white);
+}
+.feature-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+.feature-list__item {
+  width: 30%;
+  text-align: center;
+}
+.scircle {
+  width: 100%;
+  padding: calc(50% - 11px) 0; /*消すと文字が上部に張り付く*/
+  margin-bottom: 15px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid white;
+  border-radius: 50%;
+  line-height: 100%;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.scircle-link {
+  color: var(--white);
+}
+.scircle::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+  position: absolute;
+  top: 0;
+  left: -100%;
+  opacity: 0.3;
+  transition: 0.5s;
+}
+.scircle:hover::before {
+  left: 0;
+}
+.feature-list__itemName {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.feature-list__itemText {
+  font-size: 14px;
+}
+
+/*flow*/
+.flow {
+  background-color: var(--white);
+  color: var(--text-black);
+}
+.flow > .inner {
+  padding-bottom: 0;
+}
+.flow-title {
+  color: var(--text-black);
+  margin-top: 40px;
+}
+.flow-firstText {
+  margin: 60px 0;
+}
+.flow--flex {
+  display: flex;
+  justify-content: space-between;
+}
+.flow-shapes {
+  width: 200px;
+  text-align: center;
+}
+.flow-shapes__item {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  margin-bottom: 60px;
+  background-color: var(--dark-gray);
+  font-size: 14px;
+  color: var(--white);
+}
+.flow-shapes__item:not(:last-child)::before {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  display: block;
+  width: 50px;
+  height: 60px;
+  background-color: #ffdd00;
+}
+.flow-shapes__item::after {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 30px solid #414141;
+  border-right: 100px solid transparent;
+  border-left: 100px solid transparent;
+}
+.flow-texts {
+  width: 72%;
+}
+.flow-texts__item {
+  display: flex;
+  gap: 10px;
+}
+.flow-texts__itemNumber {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+  border-radius: 50%;
+  line-height: 1;
+  text-align: center;
+  background-color: var(--dark-gray);
+  color: var(--white);
+  font-weight: normal;
+}
+.flow-texts__itemName {
+  font-weight: normal;
+  font-size: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #121212;
+}
+.flow-texts__itemText {
+  font-size: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 35px;
+}
+.flow--flex-right {
+  width: 90%;
+}
+
+/*contact*/
+.contact {
+  margin-top: -1px;
+  padding-bottom: 80px;
+  background-color: var(--white);
+  color: var(--text-black);
+}
+.contact-firstText {
+  margin-bottom: 60px;
+}
+.contact-list {
+  display: flex;
+  gap: 46px;
+}
+.contact-list__item {
+  position: relative;
+  width: calc((100% - 96px) / 3);
+  text-align: center;
+  border: 1px solid #121212;
+  padding: 50px 0;
+  transition: all 0.1s ease-in;
+}
+.contact-list__item:hover {
+  outline: 3px solid #121212;
+}
+.contact-list__item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 10px solid #121212;
+  border-bottom: 10px solid #121212;
+  border-left: 10px solid transparent;
+  right: 4px;
+  bottom: 4px;
+}
+.contact-list__itemImg {
+  width: 64px;
+  height: 64px;
+  aspect-ratio: 64 / 64;
+}
+.contact-list__itemName {
+  font-size: 14px;
+  color: var(--text-black);
+}
+
+/*footer*/
+.footer {
+  background-color: var(--text-black);
+  color: var(--white);
+  text-align: center;
+}
+.footer > .inner {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.footer-nav__item {
+  padding: 0 20px;
+  position: relative;
+  font-size: 14px;
+  border-right: 1px solid #fff;
+}
+.footer-nav__item:last-child {
+  border-right: none;
+}
+.footer-nav__link {
+  color: var(--white);
+}
+.copyright {
+  font-size: 12px;
+}
+.toTop {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: #121212;
+}
+.toTop::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #fff;
+  border-left: 7px solid transparent;
+}
+
+/*responsive*/
+@media screen and (max-width: 960px) {
+  .main,
+  .footer {
+    position: relative;
+    margin-left: 0;
+  }
+  .inner {
+    padding-bottom: 50px;
+  }
+
+  .header {
+    position: fixed; /*これだけでヘッダー固定可。つうかよく見なくてもfixed使うとこだわ…*/
+    width: 100%;
+    height: 72px;
+    z-index: 50;
+  }
+  .header-wrapper {
+    margin: 0 18px;
+  }
+  .logo {
+    position: fixed;
+    width: 180px;
+    top: 9px;
+    left: 18px;
+    margin-bottom: 0;
+  }
+
+  .gnav {
+    position: absolute;
+    top: 0px;
+    left: -500px;
+    transition: all 0.7s;
+    background-color: var(--white);
+    height: 100vh;
+    width: 300px;
+    z-index: 99;
+    padding-top: 72px;
+    padding-left: 20px;
+    opacity: 0;
+  }
+  .gnav.active {
+    left: 0;
+    opacity: 1;
+  }
+  .hamburger-menu-btn {
+    position: fixed;
+    top: 25px;
+    right: 18px;
+    height: 30px;
+    width: 30px;
+    z-index: 100;
+  }
+  .hamburger-menu-bar {
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 30px;
+    background-color: var(--text-black);
+  }
+  .hamburger-menu-bar:nth-child(1) {
+    top: 0;
+    transition: all 0.5s;
+  }
+  .hamburger-menu-bar:nth-child(2) {
+    top: 10px;
+    transition: all 0.5s;
+  }
+  .hamburger-menu-bar:nth-child(3) {
+    top: 20px;
+    transition: all 0.5s;
+  }
+  .hamburger-menu-btn.active > .hamburger-menu-bar {
+    background-color: var(--white);
+  }
+  .hamburger-menu-btn.active > .hamburger-menu-bar:nth-child(1) {
+    transform: rotate(405deg);
+    top: 50%;
+  }
+  .hamburger-menu-btn.active > .hamburger-menu-bar:nth-child(2) {
+    display: none;
+  }
+  .hamburger-menu-btn.active > .hamburger-menu-bar:nth-child(3) {
+    transform: rotate(-405deg);
+    top: 50%;
+  }
+  .mask.active {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.8;
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  .video {
+    height: 80vh;
+  }
+  .video video {
+    height: 520px;
+    top: 72px;
+    left: 0px;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 35px;
+  }
+  .section-title::before,
+  .section-title::after {
+    width: 60px;
+  }
+
+  .inner {
+    padding: 60px 20px;
+  }
+  .project > .inner {
+    padding-bottom: 10px;
+  }
+  .project-imgs {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .project-imgs__item {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .feature-list {
+    margin-bottom: 60px;
+  }
+
+  .flow > .inner {
+    padding: 60px 25px 0;
+  }
+  .flow-title {
+    margin-top: 0;
+  }
+  .flow-firstText {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .flow--flex {
+    flex-direction: column;
+  }
+  .flow-shapes {
+    margin: 0 auto;
+    width: fit-content;
+  }
+  .flow-texts {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .flow-shapes__item {
+    width: 295px;
+  }
+  .flow-shapes__item::after {
+    border-right: calc((50vh - 8px) / 2) solid transparent;
+    border-left: calc((50vh - 8px) / 2) solid transparent;
+  }
+  .flow--flex-right {
+    width: 87%;
+    margin-bottom: 17px;
+  }
+
+  .contact-firstText {
+    margin-bottom: 30px;
+  }
+  .contact-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-list__item {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .contact-list__itemName {
+    padding-top: 5px;
+  }
+
+  .footer > .inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .footer-nav {
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .footer-nav__item {
+    padding: 0 19px;
+    margin-bottom: 10px;
+  }
+}
+
+/*
+PC全体→SP全体 (あなたの現在の手法)
+　	PCの全スタイル → @mediaでSPの全スタイル
+　　一連の流れで記述でき直感的で楽。スタイル全体像を把握しやすい。
+　　関連するPCとSPのスタイルが離れ、修正時に探す手間が生じる。
+　　🌟🌟🌟 (小〜中規模)
+セクションごと
+　　.header (PC/SP) → .main (PC/SP) → ...
+　　PCとSPのスタイルが近接しており、修正や追記がしやすい。
+　	全体を通してのブレイクポイントや共通スタイルの変更時に全体を見渡す必要がある。
+　	🌟🌟🌟🌟 (中〜大規模)
+
+・SP版のアイテム幅が 295px ならば、以下の値がより正確です。
+.flow-shapes__item::after {
+    border-right: 147.5px solid transparent; 　 または calc(295px / 2)
+    border-left: 147.5px solid transparent; 　　または calc(295px / 2)
+    　 PC版と同様に、三角形の底辺の幅をアイテム幅に合わせる
+}
+
+・position: fixed のビデオに対し、top: -220px は少し強引な調整に見えます。
+.video video {
+  position: fixed;
+  top: -220px;  調整値
+  z-index: -1;
+}
+推奨される手法は、親要素 .video に overflow: hidden; を設定し、
+video 要素を**min-width: 100vw** や min-height: 100vh、
+そして object-fit: cover を使って画面いっぱいに広げ、
+top/left や transform で中央寄せすることです。
+こうすることで、どの画面サイズでも中央に表示され、topの調整値が不要になることが多いです。
+
+・.scircle {
+  width: 100%;
+  padding: calc(50% - 11px) 0; 　 paddingで要素の高さ（円の直径）を調整
+}
+現在、paddingで縦横比を調整していますが、
+aspect-ratio: 1 / 1 を使用しているため、
+paddingによる調整は不要になるか、あるいはよりシンプルな計算で済むはずです。
+→そうなのか？要調査
+
+・flow-texts__itemText の下マージンが 35px になっていますが、
+最後の要素の下マージンはセクションの末尾と次のセクションとの調整に使用されるため、
+SP版などで最後の要素と次のセクションとの間に不要なスペースを生む可能性があります。
+→消しておくのが管理しやすいコードになるっぽい。以後意識すること
+
+⚠️ アクセシビリティの懸念事項
+ハンバーガーメニューのコントラスト:
+SP版で .hamburger-menu-btn.active > .hamburger-menu-bar の色が
+var(--white) に変わっています。このとき、もしヘッダーや背景が白系統の場合、
+アイコンの視認性が極端に落ちます。
+背景とアイコンのコントラスト比（WCAGで定められた基準）を満たしているか確認しましょう。
+→問題なし
+
+フォントサイズ:
+全体的に12pxや14pxが多用されています。
+モバイル環境での最低フォントサイズは**16px**が一般的に推奨されており、
+14px以下にする場合は、十分なコントラストと行間（line-height）を確保し、
+小さくしすぎないように注意が必要です。
+→カンプに従うとそうなったという話なので検討事項ではない
+*/
